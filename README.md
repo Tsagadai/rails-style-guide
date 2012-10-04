@@ -36,15 +36,18 @@ You can generate a PDF or an HTML copy of this guide using
     * [Models](#models)
     * [Migrations](#migrations)
     * [Views](#views)
+    * [Internationalization](#internationalization)
     * [Assets](#assets)
     * [Mailers](#mailers)
     * [Bundler](#bundler)
     * [Priceless Gems](#priceless-gems)
     * [Flawed Gems](#flawed-gems)
     * [Managing processes](#managing-processes)
+
 * [Testing Rails applications](#testing-rails-applications)
     * [Cucumber](#cucumber)
     * [RSpec](#rspec)
+
 
 # Developing Rails applications
 
@@ -444,6 +447,7 @@ an empty database.
 * Never make complex formatting in the views, export the formatting to
   a method in the view helper or the model.
 * Mitigate code duplication by using partial templates and layouts.
+* Use markdown for long static content.
 * Add
   [client side validation](https://github.com/bcardarella/client_side_validations)
   for the custom validators. The steps to do this are:
@@ -488,8 +492,14 @@ an empty database.
 
 ## Internationalization
 
+Internationalization is important. If you are only writing code valid for
+one language you are doing yourself and others a diservice. *Always*
+anticipate international growth and don't cut out other markets and
+developers just because they may not speak your language.
+
+* Use I18n.l for printing dates and times. Do not use DateTime.
 * No strings or other locale specific settings should be used in the views,
-models and controllers. These texts should be moved to the locale files in
+models and controllers. All text should be moved to the locale files in
 the `config/locales` directory.
 * When the labels of an ActiveRecord model need to be translated,
 use the `activerecord` scope:
